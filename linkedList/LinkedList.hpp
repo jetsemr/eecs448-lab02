@@ -1,6 +1,6 @@
 /**
-*	@author 
-*	@date 
+*	@author Jet Semrick
+*	@date 02-12-2021
 *	@file LinkedList.hpp
 *	@brief Implementation file for templated LinkedList class
 */
@@ -30,9 +30,9 @@ template <typename T>
 int LinkedList<T>::size() const
 {
 	/** TODO 
-		Fix this method
+		Fix this method - Fixed
 	*/
-	return(0);
+	return(m_size);
 }
 
 template <typename T>
@@ -42,8 +42,17 @@ bool LinkedList<T>::search(T value) const
 	bool isFound = false;
 
 	/** TODO 
-		Fix this method
+		Fix this method - Fixed
 	*/
+
+	while (temp != nullptr)
+	{
+		if (temp->getValue() == value)
+		{
+			isFound = true;
+		}
+		temp = temp->getNext();
+	}
 
 	return(isFound);
 }
@@ -104,8 +113,37 @@ bool LinkedList<T>::removeBack()
 	bool isRemoved = false;
 
 	/** TODO 
-		Fix this method
+		Fix this method - Fixed
 	*/
+	if (m_size == 0)
+	{
+		isRemoved = false;
+	}
+	else if (m_size == 1)
+	{
+		lastNode = m_front->getNext();
+		delete m_front;
+		m_front = lastNode;
+		isRemoved = true;
+		m_size--;
+	}
+	else
+	{
+		lastNode = m_front;
+		secondintoLast = m_front;
+		while (secondintoLast->getNext()->getNext() != nullptr)
+		{
+			secondintoLast = secondintoLast->getNext();
+			lastNode = lastNode->getNext();
+		}
+
+		lastNode = lastNode->getNext();
+
+		secondintoLast->setNext(nullptr);
+		delete lastNode;
+		isRemoved = true;
+		m_size--;
+	}
 
 	return(isRemoved);
 }	

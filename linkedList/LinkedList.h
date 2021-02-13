@@ -1,7 +1,7 @@
 /**
 *	@file LinkedList.h
-*	@author 
-*	@date 
+*	@author Jet Semrick
+*	@date 02-12-2021
 *	@brief A header file for templated LinkedList class
 */
 
